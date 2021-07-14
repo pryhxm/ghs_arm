@@ -1,0 +1,8 @@
+string motor_name
+float64 angle
+float64 velocity
+float64 duration
+---
+bool result
+---
+float64 current_angle
