@@ -22,6 +22,8 @@ public:
     ~GhsArmMotorDriver();
     actionlib::SimpleActionServer<ghs_arm_msgs::TurnMotorAction> as_turn_single_motor;
     actionlib::SimpleActionServer<ghs_arm_msgs::TurnMultipleMotorsAction> as_turn_multiple_motor;
+    // todo: publish angles, velocities, the message of which has to be defined
+
 //    bool turnMotor(int motor_number, double angle, double velocity, double duration);
     bool someThingsC;
 };
