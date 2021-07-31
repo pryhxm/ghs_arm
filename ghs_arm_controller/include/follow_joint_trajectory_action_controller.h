@@ -14,11 +14,11 @@ class FollowJointTrajectoryActionController {
 private:
     ros::NodeHandle nh_;
     void executeFJT(const control_msgs::FollowJointTrajectoryGoalConstPtr &goal);
-    control_msgs::FollowJointTrajectoryFeedback ftjc_fb;
+    control_msgs::FollowJointTrajectoryFeedback fjtc_fb;
 
 public:
     FollowJointTrajectoryActionController(ros::NodeHandle &nh);
-    actionlib::SimpleActionServer<control_msgs::FollowJointTrajectoryAction> as_f_j_t;
+    actionlib::SimpleActionServer<control_msgs::FollowJointTrajectoryAction> as_fjt;
 };
 
 

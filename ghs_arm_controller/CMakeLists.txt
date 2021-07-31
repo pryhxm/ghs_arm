@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
         actionlib
         trajectory_msgs
         control_msgs
+        ghs_arm_motor_driver
+        ghs_arm_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -106,7 +108,9 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES ghs_arm_controller
-  CATKIN_DEPENDS roscpp
+  CATKIN_DEPENDS
+        roscpp
+        ghs_arm_motor_driver
 #  DEPENDS system_lib
 )
 
@@ -134,7 +138,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- add_executable(${PROJECT_NAME}_node src/ghs_arm_controller_node.cpp src/ghs_arm_controller_manager.cpp src/follow_joint_trajectory_action_controller.cpp include/follow_joint_trajectory_action_controller.h)
+ add_executable(${PROJECT_NAME}_node src/ghs_arm_controller_node.cpp src/ghs_arm_controller_manager.cpp src/follow_joint_trajectory_action_controller.cpp include/follow_joint_trajectory_action_controller.h src/joint_ang_vel_acc_controller.cpp include/joint_ang_vel_acc_controller.h)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -144,7 +148,7 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+ add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(${PROJECT_NAME}_node

@@ -1,4 +1,44 @@
 controllers:
+  joint1_controller:
+    type: JointAngVelAccController
+    joint_name: joint1
+    max_ang: 1.57
+    min_ang: -1.57
+    max_vel: 1.0
+    max_acc: 1.0
+
+  joint2_controller:
+    type: JointAngVelAccController
+    joint_name: joint2
+    max_ang: 1.57
+    min_ang: -1.57
+    max_vel: 1.0
+    max_acc: 1.0
+
+  joint3_controller:
+    type: JointAngVelAccController
+    joint_name: joint3
+    max_ang: 1.57
+    min_ang: -1.57
+    max_vel: 1.0
+    max_acc: 1.0
+
+  joint4_controller:
+    type: JointAngVelAccController
+    joint_name: joint4
+    max_ang: 1.57
+    min_ang: -1.57
+    max_vel: 1.0
+    max_acc: 1.0
+
+  joint5_controller:
+    type: JointAngVelAccController
+    joint_name: joint5
+    max_ang: 1.57
+    min_ang: -1.57
+    max_vel: 1.0
+    max_acc: 1.0
+
   arm_controller:
     type: JointTrajectoryActionController
     joint_trajectory_action_node:

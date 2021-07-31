@@ -25,7 +25,9 @@ public:
     // todo: publish angles, velocities, the message of which has to be defined
 
 //    bool turnMotor(int motor_number, double angle, double velocity, double duration);
-    bool someThingsC;
+    bool setAngle(uint8_t ID, double ang);
+    bool setVelocity(uint8_t ID, double vel);
+    bool setAcceleration(uint8_t ID, double acc);
 };
 
 

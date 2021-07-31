@@ -6,11 +6,10 @@
 
 FollowJointTrajectoryActionController::FollowJointTrajectoryActionController(ros::NodeHandle &nh) :
         nh_(nh),
-        as_f_j_t(nh_, "as_f_j_t",
-                 boost::bind(&FollowJointTrajectoryActionController::executeFJT,
-                                               this, _1),
+        as_fjt(nh_, "as_fjt",
+                 boost::bind(&FollowJointTrajectoryActionController::executeFJT,this, _1),
                  false) {
-    as_f_j_t.start();
+    as_fjt.start();
 }
 
 void FollowJointTrajectoryActionController::executeFJT(
