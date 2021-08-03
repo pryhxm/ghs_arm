@@ -109,7 +109,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES ghs_arm_motor_driver
+  LIBRARIES ghs_arm_motor_driver
   CATKIN_DEPENDS
         roscpp
         std_msgs
@@ -130,7 +130,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/ghs_arm_motor_driver.cpp
+#         src/ghs_arm_motor_driver_node.cpp src/ghs_arm_motor_driver.cpp
 # )
 
 ## Add cmake target dependencies of the library

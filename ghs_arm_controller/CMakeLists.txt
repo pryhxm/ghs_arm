@@ -110,7 +110,11 @@ catkin_package(
 #  LIBRARIES ghs_arm_controller
   CATKIN_DEPENDS
         roscpp
+        actionlib
+        trajectory_msgs
+        control_msgs
         ghs_arm_motor_driver
+        ghs_arm_msgs
 #  DEPENDS system_lib
 )
 
@@ -154,6 +158,7 @@ include_directories(
  target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES}
  )
+#         ghs_arm_motor_driver
 
 #############
 ## Install ##

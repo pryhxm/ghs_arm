@@ -9,16 +9,30 @@
 #include <actionlib/server/simple_action_server.h>
 //#include <trajectory_msgs/>
 #include <control_msgs/FollowJointTrajectoryAction.h>
+#include <ghs_arm_motor_driver.h>
+
+using namespace std;
+
+const string ROS_LOG_NAME = "fjt action controller";
 
 class FollowJointTrajectoryActionController {
 private:
     ros::NodeHandle nh_;
     void executeFJT(const control_msgs::FollowJointTrajectoryGoalConstPtr &goal);
     control_msgs::FollowJointTrajectoryFeedback fjtc_fb;
+    std::vector<GhsArmMotorDriver> ghsArmMotorDrivers;
 
 public:
     FollowJointTrajectoryActionController(ros::NodeHandle &nh);
     actionlib::SimpleActionServer<control_msgs::FollowJointTrajectoryAction> as_fjt;
+};
+
+struct Segment {
+    double start_time = 0;
+    double duration = 0;
+    double angs[5] = {0};
+    double vels[5] = {0};
+    double accs[5] = {0};
 };
 
 

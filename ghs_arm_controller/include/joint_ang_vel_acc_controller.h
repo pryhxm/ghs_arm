@@ -8,6 +8,7 @@
 
 #include <ros/ros.h>
 #include <ghs_arm_msgs/JointCommand.h>
+#include <ghs_arm_motor_driver.h>
 
 using namespace std;
 
@@ -17,11 +18,15 @@ public:
 
 private:
     ros::NodeHandle nh_;
-    ros::Subscriber sub_command_;
+    ros::Subscriber sub_command;
+    ros::Publisher pub_state;
 
     string controller_namespace_;
 
     void cb_command(const ghs_arm_msgs::JointCommandConstPtr &msg);
+
+    GhsArmMotorDriver ghsArmMotorDriver;
+
 };
 
 
