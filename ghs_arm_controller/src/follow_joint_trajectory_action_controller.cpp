@@ -6,15 +6,20 @@
 
 //const string ROS_LOG_NAME = "fjt action controller";
 
-FollowJointTrajectoryActionController::FollowJointTrajectoryActionController(ros::NodeHandle &nh) :
+FollowJointTrajectoryActionController::FollowJointTrajectoryActionController(ros::NodeHandle &nh, std::vector<GhsArmMotorDriver> &ghs_arm_motor_drivers) :
         nh_(nh),
         as_fjt(nh_, "as_fjt",
                  boost::bind(&FollowJointTrajectoryActionController::executeFJT,this, _1),
-                 false) {
+                 false),
+        ghsArmMotorDrivers_(ghs_arm_motor_drivers){
+
     as_fjt.start();
-    for (int i = 0; i < 5; i++) {
-        ghsArmMotorDrivers.push_back(GhsArmMotorDriver());
-    }
+
+//    thread t_update_state(&FollowJointTrajectoryActionController::updateState, this);
+}
+
+void FollowJointTrajectoryActionController::updateState( ) {
+    ros::Rate state_rate = ros::Rate(20);
 }
 
 void FollowJointTrajectoryActionController::executeFJT(
@@ -94,7 +99,7 @@ void FollowJointTrajectoryActionController::executeFJT(
 
         } else {
             for (int j = 0; j < 5; ++j) {
-                bool success = ghsArmMotorDrivers[j].setAngle(j, segments[j].angs[j]);
+//                bool success = ghsArmMotorDrivers[j].setAngle(j, segments[j].angs[j]);
 //                ghsArmMotorDrivers[j].setVelocity(j, segments[j].vels[j]);
 //                ghsArmMotorDrivers[j].setAcceleration(j, segments[j].accs[j]);
             }

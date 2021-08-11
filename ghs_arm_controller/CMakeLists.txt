@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(ghs_arm_controller)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+ add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
         actionlib
         trajectory_msgs
         control_msgs
+        sensor_msgs
         ghs_arm_motor_driver
         ghs_arm_msgs
 )
@@ -142,7 +143,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- add_executable(${PROJECT_NAME}_node src/ghs_arm_controller_node.cpp src/ghs_arm_controller_manager.cpp src/follow_joint_trajectory_action_controller.cpp include/follow_joint_trajectory_action_controller.h src/joint_ang_vel_acc_controller.cpp include/joint_ang_vel_acc_controller.h)
+ add_executable(${PROJECT_NAME}_node src/ghs_arm_controller_node.cpp src/ghs_arm_controller_manager.cpp src/follow_joint_trajectory_action_controller.cpp include/follow_joint_trajectory_action_controller.h src/single_joint_controller.cpp include/single_joint_controller.h)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -157,8 +158,8 @@ include_directories(
 ## Specify libraries to link a library or executable target against
  target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES}
- )
 #         ghs_arm_motor_driver
+ )
 
 #############
 ## Install ##

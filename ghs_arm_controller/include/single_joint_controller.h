@@ -2,8 +2,8 @@
 // Created by pry on 29.07.21.
 //
 
-#ifndef GHS_ARM_CONTROLLER_JOINT_ANG_VEL_ACC_CONTROLLER_H
-#define GHS_ARM_CONTROLLER_JOINT_ANG_VEL_ACC_CONTROLLER_H
+#ifndef GHS_ARM_CONTROLLER_SINGLE_JOINT_CONTROLLER_H
+#define GHS_ARM_CONTROLLER_SINGLE_JOINT_CONTROLLER_H
 
 
 #include <ros/ros.h>
@@ -12,9 +12,9 @@
 
 using namespace std;
 
-class JointAngVelAccController {
+class SingleJointController {
 public:
-    JointAngVelAccController(ros::NodeHandle &nh, string controller_namespace);
+    SingleJointController(ros::NodeHandle &nh, string controller_namespace);
 
 private:
     ros::NodeHandle nh_;
@@ -25,9 +25,9 @@ private:
 
     void cb_command(const ghs_arm_msgs::JointCommandConstPtr &msg);
 
-    GhsArmMotorDriver ghsArmMotorDriver;
+//    GhsArmMotorDriver ghsArmMotorDriver;
 
 };
 
 
-#endif //GHS_ARM_CONTROLLER_JOINT_ANG_VEL_ACC_CONTROLLER_H
+#endif //GHS_ARM_CONTROLLER_SINGLE_JOINT_CONTROLLER_H

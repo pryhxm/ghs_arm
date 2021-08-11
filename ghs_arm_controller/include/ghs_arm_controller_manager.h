@@ -7,8 +7,10 @@
 
 #include "ros/ros.h"
 #include <ghs_arm_motor_driver.h>
-#include "../include/joint_ang_vel_acc_controller.h"
+#include "../include/single_joint_controller.h"
 #include "../include/follow_joint_trajectory_action_controller.h"
+#include <thread>
+#include <sensor_msgs/JointState.h>
 
 using namespace std;
 
@@ -16,11 +18,17 @@ class GhsArmControllerManager {
 private:
     ros::NodeHandle nh_;
     string controller_name;
-//    vector<string> fjt_joint_controllers_;
+    vector<GhsArmMotorDriver> ghsArmMotorDrivers;
 
-    // controllers:
-    vector<JointAngVelAccController> jointAngVelAccControllers;
+    // Publishers and Subscribers:
+    ros::Publisher pub_joint_state;
+
+    // Controllers:
+    vector<SingleJointController> singleJointControllers;
     FollowJointTrajectoryActionController fjtActionController;
+
+
+    void publishJointStates();
 
 public:
     GhsArmControllerManager(ros::NodeHandle &nh);

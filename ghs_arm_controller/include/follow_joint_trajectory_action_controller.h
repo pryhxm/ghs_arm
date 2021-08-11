@@ -10,6 +10,7 @@
 //#include <trajectory_msgs/>
 #include <control_msgs/FollowJointTrajectoryAction.h>
 #include <ghs_arm_motor_driver.h>
+#include <thread>
 
 using namespace std;
 
@@ -20,10 +21,12 @@ private:
     ros::NodeHandle nh_;
     void executeFJT(const control_msgs::FollowJointTrajectoryGoalConstPtr &goal);
     control_msgs::FollowJointTrajectoryFeedback fjtc_fb;
-    std::vector<GhsArmMotorDriver> ghsArmMotorDrivers;
+    std::vector<GhsArmMotorDriver> ghsArmMotorDrivers_;
+
+    void updateState();
 
 public:
-    FollowJointTrajectoryActionController(ros::NodeHandle &nh);
+    FollowJointTrajectoryActionController(ros::NodeHandle &nh, std::vector<GhsArmMotorDriver> &ghs_arm_motor_drivers);
     actionlib::SimpleActionServer<control_msgs::FollowJointTrajectoryAction> as_fjt;
 };
 
